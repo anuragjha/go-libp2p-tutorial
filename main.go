@@ -3,6 +3,9 @@ package main
 import (
 	"context"
 	"fmt"
+	"os"
+	"os/signal"
+	"syscall"
 )
 import "github.com/libp2p/go-libp2p"
 
@@ -19,7 +22,12 @@ func main() {
 	}
 
 	// print the node's listening addresses
-	fmt.Printf("Node Id= %v, Node Addrs= %v", node.ID(), node.Addrs())
+	fmt.Printf("Node Id= %v, Node Addrs= %v\n", node.ID(), node.Addrs())
+
+	// wait for a SIGINT or SIGTERM signal
+	ch := make(chan os.Signal, 1)
+	signal.Notify(ch, syscall.SIGINT, syscall.SIGTERM)
+	<-ch
 
 	// shut the node down
 	err = node.Close()
