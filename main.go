@@ -16,8 +16,10 @@ func main() {
 		panic(err)
 	}
 
+	// print the node's listening addresses
 	fmt.Printf("Node Id= %v, Node Addrs= %v", node.ID(), node.Addrs())
 
+	// shut the node down
 	err = node.Close()
 	if err != nil {
 		panic(err)
