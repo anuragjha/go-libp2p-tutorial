@@ -11,7 +11,9 @@ func main() {
 	ctx := context.Background()
 
 	// start a libp2p node with default settings
-	node, err := libp2p.New(ctx)
+	node, err := libp2p.New(ctx,
+		libp2p.ListenAddrStrings("/ip4/127.0.0.1/tcp/2000"),
+	)
 	if err != nil {
 		panic(err)
 	}
