@@ -1,4 +1,8 @@
 //  Followed from webpage - https://docs.libp2p.io/tutorials/getting-started/go/
+// Run Instructions:
+// 1. Run 1st node as `./pingpong`
+// 2. Run 2nd node as `./pingpong <1st node addr>
+
 package main
 
 import (
